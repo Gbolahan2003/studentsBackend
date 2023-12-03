@@ -1,10 +1,14 @@
 const mongoose= require('mongoose')
 
 const studentschema = mongoose.Schema({
-    FirstName:String,
-    LastName:{
+    FirstName:{
         type: String,
         required:[true, 'A student must have a first name'],
+        
+    },
+    LastName:{
+        type: String,
+        required:[true, 'A student must have a Last name'],
         
     },
     phoneNumber:{
@@ -18,11 +22,16 @@ const studentschema = mongoose.Schema({
         type: String,
         required:[true, 'A student must have an email']
     },
-    Date:Date.now(),
-    Age:Number,
-    Gender:String,
-    Status:Boolean,
+    createdAT:{
+        type:Date,
+        default:Date.now(),
+        select:false
+    }
+    
 
-})
+} , {
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true }
+  })
 const student = mongoose.model('Student',studentschema )
 module.exports= student

@@ -1,4 +1,4 @@
-const app = requirre('express')
+const app = require('express')
 const Student = require('../schemas/studentSchema')
 
 exports.getAllStudents =  async(req,res)=>{
